@@ -1,2 +1,10 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script>
+  // logic and data lives here
+</script>
+
+<!-- markup lives here -->
+ Welcome to <b>Data, Computation & Innovation II</b>
+
+<style>
+  /* styles live here */
+</style>
