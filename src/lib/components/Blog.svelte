@@ -1,6 +1,6 @@
 <script>
-	import JaredChart from "./stories/JaredChart.svelte";
-	import Chart2 from "./stories/Chart2.svelte";
+	import ExampleStory from './stories/ExampleStory.svelte';
+
 	// Copy _StoryCardTemplate.svelte into stories/, rename it, then import here:
 	// import YourNameStory from './stories/YourNameStory.svelte';
 </script>
@@ -8,11 +8,12 @@
 <main class="blog">
 	<div class="blog-column">
 		<header class="blog-header">
-			<h1 class="blog-title">World Cup</h1>
+			<h1 class="blog-title">Blog title here</h1>
 			<p class="blog-date">Published June 10, 2026</p>
 		</header>
 
-		<JaredChart />
+		<ExampleStory />
+		<!-- <YourNameStory /> -->
 	</div>
 </main>
 
