@@ -1,10 +1,5 @@
 <script>
-  // logic and data lives here
+	import Blog from '../lib/components/Blog.svelte';
 </script>
 
-<!-- markup lives here -->
- Welcome to <b>Data, Computation & Innovation II</b>
-
-<style>
-  /* styles live here */
-</style>
+<Blog />
