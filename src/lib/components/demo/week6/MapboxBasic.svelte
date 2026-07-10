@@ -6,8 +6,8 @@
 	import MapboxKeyMissing from './MapboxKeyMissing.svelte';
 
 	const token = dev
-		? (import.meta.env.DEV_MAPBOX_ACCESS_TOKEN ?? '')
-		: (import.meta.env.PROD_MAPBOX_ACCESS_TOKEN ?? '');
+		? (import.meta.env.VITE_MAPBOX_TOKEN_DEV ?? '')
+		: (import.meta.env.VITE_MAPBOX_TOKEN_PROD ?? '');
 	const hasToken = Boolean(token.trim());
 
 	const center = [-73.9626, 40.8075];
