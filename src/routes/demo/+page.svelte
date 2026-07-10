@@ -1,147 +1,86 @@
 <script>
-	import Card from '$lib/components/demo/Card.svelte';
-	import Panel from '$lib/components/demo/Panel.svelte';
-	import Scroller from '$lib/components/Scroller.svelte';
-	import Background from '$lib/components/demo/SimpleBackground.svelte';
-
-	let index = $state(0);
-	let offset = $state(0);
-	let progress = $state(0);
-	let count = $state(0);
+	import DemoNav from '$lib/components/layout/gallery/DemoNav.svelte';
+	import DemoSection from '$lib/components/layout/gallery/DemoSection.svelte';
+	import DemoFrame from '$lib/components/layout/gallery/DemoFrame.svelte';
+	import { demoCatalog } from '$lib/demo/catalog.js';
+	import { getDemoSource } from '$lib/demo/sources.js';
 </script>
 
+<svelte:head>
+	<title>Code examples gallery</title>
+</svelte:head>
+
 <main class="page">
-	<section class="demo">
-		<h1>Components demo</h1>
+	<header class="hero">
+		<h1>Code examples gallery</h1>
 		<p class="intro">
-			Start with simple props, then pass markup into a component with snippets, then combine both
-			in a more advanced component.
+			Live versions of the examples from <strong>Data, Computation &amp; Innovation II</strong>.
 		</p>
-	</section>
+	</header>
 
-	<section class="demo">
-		<h2>1. Props</h2>
-		<p class="intro">
-			<code>Card</code> receives strings as props. Change the props, change the output.
-		</p>
+	<div class="layout">
+		<DemoNav sections={demoCatalog} />
 
-		<div class="cards">
-			<Card title="First card" description="This card uses the default props." />
-
-			<Card
-				title="Second card"
-				description="Props let a parent customize a child component."
-				accent="#2a9d8f"
-			/>
-
-			<Card title="Third card" description="Same component, different data." accent="#e76f51" />
+		<div class="content">
+			{#each demoCatalog as section}
+				<DemoSection id={section.id} title={section.title} source={section.source}>
+					{#each section.demos as demo}
+						<DemoFrame
+							id={demo.id}
+							title={demo.title}
+							description={demo.description}
+							code={demo.file ? getDemoSource(demo.file) : null}
+						>
+							<demo.component />
+						</DemoFrame>
+					{/each}
+				</DemoSection>
+			{/each}
 		</div>
-	</section>
-
-	<section class="demo">
-		<h2>2. Snippets</h2>
-		<p class="intro">
-			<code>Panel</code> receives a <code>content</code> snippet — a chunk of markup defined by the
-			parent and rendered inside the child with <code>{'@render content()'}</code>.
-		</p>
-
-		<div class="panels">
-			<Panel title="Text panel">
-				{#snippet content()}
-					<p>Any HTML can go here. The parent decides what appears inside the panel.</p>
-				{/snippet}
-			</Panel>
-
-			<Panel title="List panel">
-				{#snippet content()}
-					<ul>
-						<li>Snippets can include multiple elements</li>
-						<li>They are not limited to a single string prop</li>
-						<li>Scroller uses this idea for <code>background</code> and <code>foreground</code></li>
-					</ul>
-				{/snippet}
-			</Panel>
-
-			<Panel title="Styled panel">
-				{#snippet content()}
-					<p class="callout">Custom content can include its own classes and structure.</p>
-				{/snippet}
-			</Panel>
-		</div>
-	</section>
-
-	<section class="demo scroller-demo">
-		<h2>3. Scroller</h2>
-		<p class="intro">
-			<code>Scroller</code> uses two named snippets — <code>background</code> and
-			<code>foreground</code> — plus bindable props like <code>index</code> and
-			<code>count</code>.
-		</p>
-
-		<Scroller top={0} bottom={1} debugger={true} bind:index bind:offset bind:progress bind:count>
-			{#snippet background()}
-				<Background {index} {count} />
-			{/snippet}
-
-			{#snippet foreground()}
-				<div class="step">This is the first step.</div>
-				<div class="step">This is the second step.</div>
-				<div class="step">This is the third step.</div>
-				<div class="step">This is the fourth step.</div>
-				<div class="step">This is the fifth step.</div>
-			{/snippet}
-		</Scroller>
-	</section>
+	</div>
 </main>
 
 <style>
 	.page {
-		max-width: 40rem;
+		max-width: 72rem;
 		margin: 0 auto;
-		padding: 2rem 1.5rem 3rem;
+		padding: 2rem 1.5rem 4rem;
 		font-family: system-ui, sans-serif;
 		color: #111;
 	}
 
-	.demo + .demo {
-		margin-top: 2.5rem;
+	.hero {
+		margin-bottom: 2rem;
 	}
 
 	h1 {
 		margin: 0 0 0.5rem;
-		font-size: 1.75rem;
-	}
-
-	h2 {
-		margin: 0 0 0.5rem;
-		font-size: 1.25rem;
+		font-size: clamp(1.75rem, 4vw, 2.25rem);
+		line-height: 1.2;
 	}
 
 	.intro {
-		margin: 0 0 1.5rem;
-		color: #555;
-		line-height: 1.5;
-	}
-
-	.cards,
-	.panels {
-		display: grid;
-		gap: 1rem;
-	}
-
-	.callout {
 		margin: 0;
-		padding: 0.75rem 1rem;
-		border-radius: 0.375rem;
-		background: #eef6fb;
-		color: #1d3557;
+		max-width: 42rem;
+		color: #555;
+		line-height: 1.6;
 	}
 
-	.scroller-demo {
-		max-width: none;
+	.layout {
+		display: grid;
+		gap: 2rem;
 	}
 
-	.step {
-		height: 100vh;
+	.content {
+		display: grid;
+		gap: 3rem;
+		min-width: 0;
+	}
+
+	@media (min-width: 56rem) {
+		.layout {
+			grid-template-columns: 16rem minmax(0, 1fr);
+			align-items: start;
+		}
 	}
 </style>
