@@ -2,12 +2,13 @@
 	import { onMount } from 'svelte';
 	import mapboxgl from 'mapbox-gl';
 	import 'mapbox-gl/dist/mapbox-gl.css';
-	import { env } from '$env/dynamic/public';
 	import MapboxKeyMissing from './MapboxKeyMissing.svelte';
 
 	let { index = 0, slides = [] } = $props();
 
-	const token = env.PUBLIC_MAPBOX_ACCESS_TOKEN ?? '';
+	const token = import.meta.env.DEV
+		? (import.meta.env.DEV_MAPBOX_ACCESS_TOKEN ?? '')
+		: (import.meta.env.PROD_MAPBOX_ACCESS_TOKEN ?? '');
 	const hasToken = Boolean(token.trim());
 
 	let container = $state();

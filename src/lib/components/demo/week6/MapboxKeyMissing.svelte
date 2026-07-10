@@ -1,15 +1,21 @@
 <div class="missing">
 	<h4 class="title">Mapbox access token required</h4>
-	<p class="intro">These demos need a Mapbox public token. Without one, the map cannot load.</p>
 	<ol class="steps">
 		<li>
 			Create a free account at
 			<a href="https://account.mapbox.com/" target="_blank" rel="noopener noreferrer">mapbox.com</a>
 		</li>
-		<li>Copy your <strong>default public token</strong> from the Mapbox account dashboard</li>
-		<li>Copy <code>.env.example</code> to <code>.env</code> in the project root</li>
+		<li>Copy <code>.env.example</code> to <code>.env</code></li>
 		<li>
-			Set <code>PUBLIC_MAPBOX_ACCESS_TOKEN=pk.your_token_here</code> in <code>.env</code>
+			Set <code>DEV_MAPBOX_ACCESS_TOKEN</code> to your default public token from the
+			<a href="https://account.mapbox.com/access-tokens/" target="_blank" rel="noopener noreferrer"
+				>Mapbox dashboard</a
+			>
+		</li>
+		<li>
+			If publishing to GitHub Pages, create a new public token with URL restrictions for
+			<code>https://&lt;username&gt;.github.io/&lt;repo-name&gt;/*</code> and set
+			<code>PROD_MAPBOX_ACCESS_TOKEN</code>
 		</li>
 		<li>Restart the dev server: <code>npm run dev</code></li>
 	</ol>
@@ -30,15 +36,10 @@
 	}
 
 	.title {
-		margin: 0 0 0.5rem;
+		margin: 0 0 0.75rem;
 		font-size: 1rem;
 		font-weight: 600;
 		color: #92400e;
-	}
-
-	.intro {
-		margin: 0 0 1rem;
-		line-height: 1.5;
 	}
 
 	.steps {

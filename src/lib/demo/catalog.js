@@ -343,7 +343,7 @@ export const demoCatalog = [
 				id: 'mapbox-basic',
 				title: 'Mapbox — base map + marker',
 				description:
-					'Loads a Mapbox map centered on Columbia University with a labeled marker. Requires PUBLIC_MAPBOX_ACCESS_TOKEN in .env.',
+					'Loads a Mapbox map centered on Columbia University with a labeled marker.',
 				file: 'week6/MapboxBasic.svelte',
 				component: MapboxBasic
 			},
