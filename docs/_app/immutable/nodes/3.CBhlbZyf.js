@@ -5692,11 +5692,12 @@ gl_Position=u_matrix*vec4(vpos,1);gl_Position.z=u_reset_depth==1.0 ? gl_Position
 </style>
 `,"/src/lib/components/demo/week6/MapboxBasic.svelte":`<script>
 	import { onMount } from 'svelte';
+	import { dev } from '$app/environment';
 	import mapboxgl from 'mapbox-gl';
 	import 'mapbox-gl/dist/mapbox-gl.css';
 	import MapboxKeyMissing from './MapboxKeyMissing.svelte';
 
-	const token = import.meta.env.DEV
+	const token = dev
 		? (import.meta.env.DEV_MAPBOX_ACCESS_TOKEN ?? '')
 		: (import.meta.env.PROD_MAPBOX_ACCESS_TOKEN ?? '');
 	const hasToken = Boolean(token.trim());
@@ -5754,13 +5755,15 @@ gl_Position=u_matrix*vec4(vpos,1);gl_Position.z=u_reset_depth==1.0 ? gl_Position
 </style>
 `,"/src/lib/components/demo/week6/MapboxFlyBackground.svelte":`<script>
 	import { onMount } from 'svelte';
+	import { dev } from '$app/environment';
 	import mapboxgl from 'mapbox-gl';
 	import 'mapbox-gl/dist/mapbox-gl.css';
 	import MapboxKeyMissing from './MapboxKeyMissing.svelte';
 
 	let { index = 0, slides = [] } = $props();
 
-	const token = import.meta.env.DEV
+
+	const token = dev
 		? (import.meta.env.DEV_MAPBOX_ACCESS_TOKEN ?? '')
 		: (import.meta.env.PROD_MAPBOX_ACCESS_TOKEN ?? '');
 	const hasToken = Boolean(token.trim());
