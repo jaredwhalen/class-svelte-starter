@@ -23,6 +23,6 @@
 	"dependencies": {
 		"@sveltejs/adapter-static": "^3.0.10",
 		"d3": "^7.9.0",
-		"mapbox-gl": "^3.26.0"
+		"mapbox-gl": "3.15.0"
 	}
 }
