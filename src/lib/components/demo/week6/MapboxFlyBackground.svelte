@@ -7,9 +7,11 @@
 
 	let { index = 0, slides = [] } = $props();
 
-	const token = dev
-		? (import.meta.env.VITE_MAPBOX_TOKEN_DEV ?? '')
-		: (import.meta.env.VITE_MAPBOX_TOKEN_PROD ?? '');
+	
+	let token = dev
+		? import.meta.env.VITE_MAPBOX_TOKEN_DEV || ''
+		: import.meta.env.VITE_MAPBOX_TOKEN_PROD || '';
+
 	const hasToken = Boolean(token.trim());
 
 	let container = $state();

@@ -5,9 +5,10 @@
 	import 'mapbox-gl/dist/mapbox-gl.css';
 	import MapboxKeyMissing from './MapboxKeyMissing.svelte';
 
-	const token = dev
-		? (import.meta.env.VITE_MAPBOX_TOKEN_DEV ?? '')
-		: (import.meta.env.VITE_MAPBOX_TOKEN_PROD ?? '');
+	let token = dev
+		? import.meta.env.VITE_MAPBOX_TOKEN_DEV || ''
+		: import.meta.env.VITE_MAPBOX_TOKEN_PROD || '';
+
 	const hasToken = Boolean(token.trim());
 
 	const center = [-73.9626, 40.8075];
