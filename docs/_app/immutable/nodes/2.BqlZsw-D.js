@@ -1,1 +1,0 @@
-import{C as e,x as t}from"../chunks/B2575vSC.js";import"../chunks/xihTtKlq.js";var n=e(`<h1>Class Svelte Starter</h1>`);function r(e){t(e,n())}export{r as component};
