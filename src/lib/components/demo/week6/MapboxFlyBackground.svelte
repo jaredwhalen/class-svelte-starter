@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { dev } from '$app/environment';
-	import mapboxgl from 'mapbox-gl';
+	import * as mapboxgl from 'mapbox-gl';
 	import 'mapbox-gl/dist/mapbox-gl.css';
 	import MapboxKeyMissing from './MapboxKeyMissing.svelte';
 
@@ -41,7 +41,7 @@
 	onMount(() => {
 		if (!hasToken || !container || slides.length === 0) return;
 
-		mapboxgl.accessToken = token;
+		mapboxgl.setAccessToken(token);
 
 		map = new mapboxgl.Map({
 			container,
