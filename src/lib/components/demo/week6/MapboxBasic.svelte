@@ -1,14 +1,11 @@
 <script>
 	import { onMount } from 'svelte';
-	import { dev } from '$app/environment';
+	import { PUBLIC_MAPBOX_TOKEN } from '$env/static/public';
 	import * as mapboxgl from 'mapbox-gl';
 	import 'mapbox-gl/dist/mapbox-gl.css';
 	import MapboxKeyMissing from './MapboxKeyMissing.svelte';
 
-	let token = dev
-		? import.meta.env.VITE_MAPBOX_TOKEN_DEV || ''
-		: import.meta.env.VITE_MAPBOX_TOKEN_PROD || '';
-
+	const token = PUBLIC_MAPBOX_TOKEN;
 	const hasToken = Boolean(token.trim());
 
 	const center = [-73.9626, 40.8075];

@@ -5,17 +5,17 @@
 			Create a free account at
 			<a href="https://account.mapbox.com/" target="_blank" rel="noopener noreferrer">mapbox.com</a>
 		</li>
-		<li>Copy <code>.env.example</code> to <code>.env</code></li>
 		<li>
-			Set <code>VITE_MAPBOX_TOKEN_DEV</code> to your default public token from the
+			Copy <code>.env.development.example</code> to <code>.env.development</code> and set
+			<code>PUBLIC_MAPBOX_TOKEN</code> to your default public token from the
 			<a href="https://account.mapbox.com/access-tokens/" target="_blank" rel="noopener noreferrer"
 				>Mapbox dashboard</a
 			>
 		</li>
 		<li>
-			If publishing to GitHub Pages, create a new public token with URL restrictions for
-			<code>https://&lt;username&gt;.github.io/&lt;repo-name&gt;/*</code> and set
-			<code>VITE_MAPBOX_TOKEN_PROD</code>
+			If publishing to GitHub Pages, copy <code>.env.production.example</code> to
+			<code>.env.production</code> and set <code>PUBLIC_MAPBOX_TOKEN</code> to a separate token with URL
+			restrictions for <code>https://&lt;username&gt;.github.io/&lt;repo-name&gt;/*</code>
 		</li>
 		<li>Restart the dev server: <code>npm run dev</code></li>
 	</ol>

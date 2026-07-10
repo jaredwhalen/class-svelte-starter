@@ -51,12 +51,12 @@ npm run dev
 
 Open the URL shown in the terminal — usually `http://localhost:5173`. The code examples gallery is at **`/demo`**.
 
-Mapbox demos require two tokens in `.env` (see `.env.example`):
+Mapbox demos need a token in your env files (see `.env.development.example` and `.env.production.example`):
 
-- **`VITE_MAPBOX_TOKEN_DEV`** — your Mapbox default public token, used during `npm run dev`.
-- **`VITE_MAPBOX_TOKEN_PROD`** — a separate token with your GitHub Pages URL in its [URL restrictions](https://account.mapbox.com/access-tokens/) (for example `https://<username>.github.io/<repo-name>/*`). Used only in the production build from `make github`. Do not publish with the default token.
+- **`.env.development`** — your Mapbox default public token, used during `npm run dev`.
+- **`.env.production`** — a separate token with your GitHub Pages URL in its [URL restrictions](https://account.mapbox.com/access-tokens/) (for example `https://<username>.github.io/<repo-name>/*`). Used when you run `npm run build` or `make github`. Do not publish with the default token.
 
-The Mapbox components use `dev` from `$app/environment` to pick the token so the prod token is only included in the bundled site. Restart the dev server after changing `.env`.
+Vite picks the right file automatically based on mode. Restart the dev server after changing env files.
 
 ---
 
@@ -90,7 +90,7 @@ From the project root:
 make github
 ```
 
-If your site includes Mapbox maps, set `VITE_MAPBOX_TOKEN_PROD` in `.env` before you deploy (see [Developing](#developing)).
+If your site includes Mapbox maps, set `PUBLIC_MAPBOX_TOKEN` in `.env.production` before you deploy (see [Developing](#developing)).
 
 The `github` target in the `Makefile`:
 
