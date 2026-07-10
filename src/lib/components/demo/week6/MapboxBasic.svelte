@@ -1,10 +1,11 @@
 <script>
 	import { onMount } from 'svelte';
+	import { dev } from '$app/environment';
 	import mapboxgl from 'mapbox-gl';
 	import 'mapbox-gl/dist/mapbox-gl.css';
 	import MapboxKeyMissing from './MapboxKeyMissing.svelte';
 
-	const token = import.meta.env.DEV
+	const token = dev
 		? (import.meta.env.DEV_MAPBOX_ACCESS_TOKEN ?? '')
 		: (import.meta.env.PROD_MAPBOX_ACCESS_TOKEN ?? '');
 	const hasToken = Boolean(token.trim());
